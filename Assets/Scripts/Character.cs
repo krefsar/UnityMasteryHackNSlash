@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Attacker))]
-public class Character : MonoBehaviour, ITakeHit
+public class Character : MonoBehaviour, ITakeHit, IDie
 {
     public static List<Character> AllCharacters = new List<Character>();
 
@@ -11,7 +11,7 @@ public class Character : MonoBehaviour, ITakeHit
     public bool IsDead { get { return currentHealth <= 0; } }
 
     public event Action<int, int> OnHealthChanged = delegate { };
-    public event Action<Character> OnDied = delegate { };
+    public event Action<IDie> OnDied = delegate { };
 
     private Animator animator;
     private Controller controller;

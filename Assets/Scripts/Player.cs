@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
         OnCharacterChanged(character);
     }
 
-    private void HandleCharacterDied(Character character)
+    private void HandleCharacterDied(IDie character)
     {
         character.OnDied -= HandleCharacterDied;
         Destroy(character.gameObject);

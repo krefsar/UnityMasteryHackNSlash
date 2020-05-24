@@ -23,7 +23,7 @@ public class UIHealthBar : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void HandleCharacterDied(Character character)
+    private void HandleCharacterDied(IDie character)
     {
         character.OnHealthChanged -= HandleHealthChanged;
         character.OnDied -= HandleCharacterDied;
