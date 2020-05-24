@@ -15,12 +15,20 @@ public class UIHealthBar : MonoBehaviour
     {
         var player = GetComponentInParent<Player>();
         player.OnCharacterChanged += Player_OnCharacterChanged;
+        gameObject.SetActive(false);
     }
 
     private void Player_OnCharacterChanged(Character character)
     {
         currentCharacter = character;
         currentCharacter.OnHealthChanged += HandleHealthChanged;
+        currentCharacter.OnDied += HandleCharacterDied;
+        gameObject.SetActive(true);
+    }
+
+    private void HandleCharacterDied(Character obj)
+    {
+        gameObject.SetActive(false);
     }
 
     private void HandleHealthChanged(int currentHealth, int maxHealth)

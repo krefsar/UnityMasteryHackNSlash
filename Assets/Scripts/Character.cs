@@ -10,6 +10,7 @@ public class Character : MonoBehaviour, ITakeHit
     public int Damage { get { return damage;  } }
 
     public event Action<int, int> OnHealthChanged = delegate { };
+    public event Action<Character> OnDied = delegate { };
 
     private Animator animator;
     private Controller controller;
@@ -81,7 +82,16 @@ public class Character : MonoBehaviour, ITakeHit
     public void TakeHit(IAttack attacker)
     {
         currentHealth -= attacker.Damage;
-
         OnHealthChanged(currentHealth, maxHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        OnDied(this);
     }
 }
