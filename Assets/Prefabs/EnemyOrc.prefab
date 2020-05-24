@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6973802155909110360}
   - component: {fileID: 694066497286056248}
   - component: {fileID: 1045646152893854496}
+  - component: {fileID: -3494834845314841430}
   m_Layer: 0
   m_Name: EnemyOrc
   m_TagString: Untagged
@@ -102,6 +103,20 @@ MonoBehaviour:
   damage: 1
   attackOffset: 1
   attackRadius: 1
+--- !u!114 &-3494834845314841430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973802155909110367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02debaef875a8f3478ff2b926edfe21a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathParticlePrefab: {fileID: 114358004396844976, guid: e473029e4c70ad543a6879b82a732f4f,
+    type: 3}
 --- !u!1001 &6973802155807907690
 PrefabInstance:
   m_ObjectHideFlags: 0
