@@ -26,9 +26,6 @@ public class Character : MonoBehaviour, ITakeHit
     [SerializeField]
     private int maxHealth = 10;
 
-    [SerializeField]
-    private GameObject deathParticleEffect;
-
     private int currentHealth;
 
     private void Awake()
@@ -99,8 +96,6 @@ public class Character : MonoBehaviour, ITakeHit
 
     private void Die()
     {
-        Instantiate(deathParticleEffect, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
-
         OnDied(this);
     }
 }

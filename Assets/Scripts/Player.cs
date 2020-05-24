@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Character CharacterPrefab;
+    public Controller Controller;
+
     public bool HasController { get { return Controller != null; } }
     public int PlayerNumber { get { return playerNumber; } }
 
     public event Action<Character> OnCharacterChanged = delegate { };
 
-    public Character CharacterPrefab { get; set; }
-
-    public Controller Controller;
     [SerializeField]
     private int playerNumber;
+    [SerializeField]
+    private float respawnTime = 5f;
+
     private UIPlayerText uiPlayerText;
 
     private void Awake()
@@ -49,7 +52,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator RespawnAfterDelay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(respawnTime);
         SpawnCharacter();
     }
 }
