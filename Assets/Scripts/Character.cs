@@ -8,6 +8,7 @@ public class Character : MonoBehaviour, ITakeHit
     public static List<Character> AllCharacters = new List<Character>();
 
     public int Damage { get { return damage;  } }
+    public bool IsDead { get { return currentHealth <= 0; } }
 
     public event Action<int, int> OnHealthChanged = delegate { };
     public event Action<Character> OnDied = delegate { };
@@ -24,6 +25,9 @@ public class Character : MonoBehaviour, ITakeHit
 
     [SerializeField]
     private int maxHealth = 10;
+
+    [SerializeField]
+    private GameObject deathParticleEffect;
 
     private int currentHealth;
 
@@ -81,17 +85,22 @@ public class Character : MonoBehaviour, ITakeHit
 
     public void TakeHit(IAttack attacker)
     {
-        currentHealth -= attacker.Damage;
-        OnHealthChanged(currentHealth, maxHealth);
-
-        if (currentHealth <= 0)
+        if (!IsDead)
         {
-            Die();
+            currentHealth -= attacker.Damage;
+            OnHealthChanged(currentHealth, maxHealth);
+
+            if (IsDead)
+            {
+                Die();
+            }
         }
     }
 
     private void Die()
     {
+        Instantiate(deathParticleEffect, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
+
         OnDied(this);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -33,7 +34,22 @@ public class Player : MonoBehaviour
     {
         var character = Instantiate(CharacterPrefab, Vector3.zero, Quaternion.identity);
         character.SetController(Controller);
+        character.OnDied += HandleCharacterDied;
 
         OnCharacterChanged(character);
+    }
+
+    private void HandleCharacterDied(Character character)
+    {
+        character.OnDied -= HandleCharacterDied;
+        Destroy(character.gameObject);
+
+        StartCoroutine(RespawnAfterDelay());
+    }
+
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(5);
+        SpawnCharacter();
     }
 }

@@ -95,6 +95,8 @@ MonoBehaviour:
   moveSpeed: 5
   damage: 0
   maxHealth: 10
+  deathParticleEffect: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
+    type: 3}
 --- !u!1001 &4729302879169272576
 PrefabInstance:
   m_ObjectHideFlags: 0
