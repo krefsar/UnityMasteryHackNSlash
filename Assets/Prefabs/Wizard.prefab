@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7559025932710825602}
   - component: {fileID: 4569038633397551788}
   - component: {fileID: 2628632277268045679}
-  - component: {fileID: -4254959381010177118}
+  - component: {fileID: 1314517462992502632}
   - component: {fileID: 164188082520280356}
   - component: {fileID: -1579575002685798769}
   m_Layer: 8
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathParticlePrefab: {fileID: 11400004, guid: 7867af58a6ec48846ae807eb4022fbaa,
     type: 3}
---- !u!114 &-4254959381010177118
+--- !u!114 &1314517462992502632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,13 +74,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2180532884282401147}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8d2c6fe2a7d1d04f83fcacb7a1f9a9c, type: 3}
+  m_Script: {fileID: 11500000, guid: b613d7a8fbbb4774d94342aa8e15aab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRefreshSpeed: 1.5
-  damage: 1
-  attackOffset: 1
-  attackRadius: 1
+  attackRefreshSpeed: 1
+  projectilePrefab: {fileID: 6958548618825230942, guid: 4d96302acb81593498612bb5eee654d0,
+    type: 3}
 --- !u!54 &164188082520280356
 Rigidbody:
   m_ObjectHideFlags: 0

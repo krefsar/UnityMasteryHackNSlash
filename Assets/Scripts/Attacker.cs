@@ -14,11 +14,15 @@ public class Attacker : MonoBehaviour, IAttack
     [SerializeField]
     private float attackRadius = 1f;
 
+    private Animator animator;
+
     private float attackTimer;
     private Collider[] attackResults;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
+
         var animationImpactWatcher = GetComponentInChildren<AnimationImpactWatcher>();
         if (animationImpactWatcher != null)
         {
@@ -53,7 +57,13 @@ public class Attacker : MonoBehaviour, IAttack
 
     public void Attack(ITakeHit target)
     {
+        animator.SetTrigger("Attack");
         attackTimer = 0;
         target.TakeHit(this);
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("Attack");
     }
 }
