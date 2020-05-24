@@ -14,11 +14,11 @@ public class UIHealthBar : MonoBehaviour
     private void Awake()
     {
         var player = GetComponentInParent<Player>();
-        player.OnCharacterChanged += Player_OnCharacterChanged;
+        player.OnCharacterChanged += HandleCharacterChanged;
         gameObject.SetActive(false);
     }
 
-    private void Player_OnCharacterChanged(Character character)
+    private void HandleCharacterChanged(Character character)
     {
         currentCharacter = character;
         currentCharacter.OnHealthChanged += HandleHealthChanged;
@@ -26,8 +26,12 @@ public class UIHealthBar : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void HandleCharacterDied(Character obj)
+    private void HandleCharacterDied(Character character)
     {
+        character.OnHealthChanged -= HandleHealthChanged;
+        character.OnDied -= HandleCharacterDied;
+
+        currentCharacter = null;
         gameObject.SetActive(false);
     }
 
