@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     public bool HasController { get { return Controller != null; } }
     public int PlayerNumber { get { return playerNumber; } }
+
+    public event Action<Character> OnCharacterChanged = delegate { };
 
     public Character CharacterPrefab { get; set; }
 
@@ -30,5 +33,7 @@ public class Player : MonoBehaviour
     {
         var character = Instantiate(CharacterPrefab, Vector3.zero, Quaternion.identity);
         character.SetController(Controller);
+
+        OnCharacterChanged(character);
     }
 }

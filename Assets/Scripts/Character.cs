@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Attacker))]
@@ -7,6 +8,8 @@ public class Character : MonoBehaviour, ITakeHit
     public static List<Character> AllCharacters = new List<Character>();
 
     public int Damage { get { return damage;  } }
+
+    public event Action<int, int> OnHealthChanged = delegate { };
 
     private Animator animator;
     private Controller controller;
@@ -78,5 +81,7 @@ public class Character : MonoBehaviour, ITakeHit
     public void TakeHit(IAttack attacker)
     {
         currentHealth -= attacker.Damage;
+
+        OnHealthChanged(currentHealth, maxHealth);
     }
 }
