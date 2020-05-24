@@ -1,0 +1,24 @@
+Eric The Viking Animation List
+
+frame: 002-018	Walk 		
+frame: 021-035	Run		
+frame: 037-060	Idle		
+frame: 062-087	Chop		
+frame: 089-122	Spin Attack 	
+frame: 125-137	Stab		
+frame: 140-158	Jump		
+frame: 161-189	Uppercut	
+frame: 194-226	Walk w/ Block 	
+frame: 229-240	Hit Right	
+frame: 243-257	Hit Left	
+frame: 260-282	Hit Back	
+frame: 285-313	Knockdown	
+frame: 316-346	Double Chop	
+frame: 349-381	1 Handed Block	
+frame: 384-442	Throw Weapon	
+frame: 445-498	Spawn From Above 
+
+	
+
+
+
