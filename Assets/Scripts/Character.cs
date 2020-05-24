@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Attacker))]
+[RequireComponent(typeof(Rigidbody))]
 public class Character : MonoBehaviour, ITakeHit, IDie
 {
     public static List<Character> AllCharacters = new List<Character>();
@@ -16,13 +17,12 @@ public class Character : MonoBehaviour, ITakeHit, IDie
     private Animator animator;
     private Controller controller;
     private Attacker attacker;
+    private Rigidbody rb;
 
     [SerializeField]
     private float moveSpeed = 5f;
-
     [SerializeField]
     private int damage;
-
     [SerializeField]
     private int maxHealth = 10;
 
@@ -32,6 +32,7 @@ public class Character : MonoBehaviour, ITakeHit, IDie
     {
         attacker = GetComponent<Attacker>();
         animator = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -49,7 +50,8 @@ public class Character : MonoBehaviour, ITakeHit, IDie
         Vector3 direction = controller.GetDirection();
         if (direction.magnitude > 0.4f)
         {
-            transform.position += direction * Time.deltaTime * moveSpeed;
+            Vector3 velocity = (direction * moveSpeed).With(y: rb.velocity.y);
+            rb.velocity = velocity;
             transform.forward = direction * 360f;
 
             animator.SetFloat("Speed", direction.magnitude);
