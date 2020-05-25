@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7784275553749358706}
   - component: {fileID: 164188082520280356}
   - component: {fileID: -1579575002685798769}
+  - component: {fileID: -7789224157184824288}
   m_Layer: 8
   m_Name: Wizard
   m_TagString: Untagged
@@ -102,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 2
   button: 1
-  attackRefreshSpeed: 1
   projectilePrefab: {fileID: 8573384273658495508, guid: 4d96302acb81593498612bb5eee654d0,
     type: 3}
   launchYOffset: 1
@@ -149,6 +149,21 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-7789224157184824288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2180532884282401147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74882930b1139479b2ec748339cb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRefreshSpeed: 1.5
+  button: 2
+  jumpForce: 300
 --- !u!1001 &6908709234621663399
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 2561517488007686945}
   - component: {fileID: 4983083808650956649}
   - component: {fileID: 2030816166639318179}
+  - component: {fileID: 1155894468100382538}
   m_Layer: 8
   m_Name: Viking
   m_TagString: Untagged
@@ -81,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1.5
+  button: 0
   damage: 1
   attackOffset: 1
   attackRadius: 1
@@ -160,6 +162,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactParticle: {fileID: 11400000, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
+--- !u!114 &1155894468100382538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358094673153428605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74882930b1139479b2ec748339cb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRefreshSpeed: 1.5
+  button: 2
+  jumpForce: 300
 --- !u!1001 &4729302879169272576
 PrefabInstance:
   m_ObjectHideFlags: 0
