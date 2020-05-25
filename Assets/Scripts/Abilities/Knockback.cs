@@ -16,10 +16,13 @@ public class Knockback : AbilityBase, IDamage
     private float knockbackForce = 10f;
 
     private Collider[] attackResults;
+    private LayerMask layerMask;
 
     private void Awake()
     {
         attackResults = new Collider[10];
+        string currentLayer = LayerMask.LayerToName(gameObject.layer);
+        layerMask = ~LayerMask.GetMask(currentLayer);
     }
 
     private void Attack()
@@ -33,7 +36,7 @@ public class Knockback : AbilityBase, IDamage
         yield return new WaitForSeconds(impactDelay);
 
         Vector3 position = transform.position + transform.forward;
-        int hitCount = Physics.OverlapSphereNonAlloc(position, attackRadius, attackResults);
+        int hitCount = Physics.OverlapSphereNonAlloc(position, attackRadius, attackResults, layerMask);
 
         for (int i = 0; i < hitCount; i++)
         {
