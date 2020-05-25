@@ -12,7 +12,9 @@ public class Character : PooledMonoBehaviour, ITakeHit, IDie
     public bool Alive { get; private set; }
 
     public event Action<int, int> OnHealthChanged = delegate { };
+
     public event Action<IDie> OnDied = delegate { };
+
     public event Action OnHit = delegate { };
 
     private Animator animator;
@@ -87,18 +89,31 @@ public class Character : PooledMonoBehaviour, ITakeHit, IDie
 
     public void TakeHit(IDamage attacker)
     {
-        if (!IsDead)
+        if (IsDead)
         {
-            currentHealth -= attacker.Damage;
-            OnHealthChanged(currentHealth, maxHealth);
-
-            OnHit();
-
-            if (IsDead)
-            {
-                Die();
-            }
+            return;
         }
+
+        ModifyHealth(-attacker.Damage);
+        OnHit();
+
+        if (IsDead)
+        {
+            Die();
+        }
+    }
+
+    public void Heal(int healAmount)
+    {
+        ModifyHealth(healAmount);
+    }
+
+    public void ModifyHealth(int amount)
+    {
+        currentHealth += amount;
+        currentHealth = Mathf.Min(currentHealth, maxHealth);
+
+        OnHealthChanged(currentHealth, maxHealth);
     }
 
     private void Die()
