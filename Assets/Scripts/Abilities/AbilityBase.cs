@@ -10,8 +10,15 @@ public abstract class AbilityBase : MonoBehaviour
     private float attackRefreshSpeed = 1.5f;
     [SerializeField]
     private PlayerButton button;
+    [SerializeField]
+    protected string animationTrigger;
 
     private Controller controller;
+
+    private void OnEnable()
+    {
+        attackTimer = attackRefreshSpeed;
+    }
 
     private void Update()
     {

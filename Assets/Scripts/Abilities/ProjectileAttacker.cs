@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ProjectileAttacker : AbilityBase, IAttack
 {
@@ -8,6 +9,8 @@ public class ProjectileAttacker : AbilityBase, IAttack
     private Projectile projectilePrefab;
     [SerializeField]
     private float launchYOffset = 1f;
+    [SerializeField]
+    private float launchDelay = 1f;
 
     private Animator animator;
 
@@ -20,8 +23,13 @@ public class ProjectileAttacker : AbilityBase, IAttack
     {
         attackTimer = 0;
 
-        animator.SetTrigger("Attack");
+        animator.SetTrigger(animationTrigger);
+        StartCoroutine(LaunchAfterDelay());
+    }
 
+    private IEnumerator LaunchAfterDelay()
+    {
+        yield return new WaitForSeconds(launchDelay);
         Vector3 spawnPosition = transform.position + Vector3.up * launchYOffset;
         projectilePrefab.Get<PooledMonoBehaviour>(spawnPosition, transform.rotation);
     }

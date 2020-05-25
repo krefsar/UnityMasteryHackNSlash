@@ -84,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1.5
   button: 0
+  animationTrigger: Attack
   damage: 1
   attackOffset: 1
   attackRadius: 1
@@ -103,9 +104,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 2
   button: 1
+  animationTrigger: SpecialAttack
   projectilePrefab: {fileID: 8573384273658495508, guid: 4d96302acb81593498612bb5eee654d0,
     type: 3}
   launchYOffset: 1
+  launchDelay: 0.45
 --- !u!114 &7784275553749358706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1.5
   button: 2
+  animationTrigger: 
   jumpForce: 300
 --- !u!1001 &6908709234621663399
 PrefabInstance:
