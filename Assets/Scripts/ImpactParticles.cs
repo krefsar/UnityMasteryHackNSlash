@@ -17,6 +17,11 @@ public class ImpactParticles : MonoBehaviour
         entity.OnHit += HandleHit;
     }
 
+    private void OnDisable()
+    {
+        entity.OnHit -= HandleHit;
+    }
+
     private void HandleHit()
     {
         impactParticle.Get<PooledMonoBehaviour>(transform.position + new Vector3(0, 2, 0), Quaternion.identity);

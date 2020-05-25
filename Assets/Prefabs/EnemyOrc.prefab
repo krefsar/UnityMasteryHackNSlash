@@ -103,6 +103,8 @@ MonoBehaviour:
   damage: 1
   attackOffset: 1
   attackRadius: 1
+  attackImpactDelay: 0.75
+  attackRange: 2
 --- !u!114 &-3494834845314841430
 MonoBehaviour:
   m_ObjectHideFlags: 0

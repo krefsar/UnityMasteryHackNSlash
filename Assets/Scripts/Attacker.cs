@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 public class Attacker : MonoBehaviour, IAttack
 {
@@ -13,6 +15,10 @@ public class Attacker : MonoBehaviour, IAttack
     private float attackOffset = 1f;
     [SerializeField]
     private float attackRadius = 1f;
+    [SerializeField]
+    private float attackImpactDelay = 1f;
+    [SerializeField]
+    private float attackRange = 2f;
 
     private Animator animator;
 
@@ -37,6 +43,12 @@ public class Attacker : MonoBehaviour, IAttack
         attackTimer += Time.deltaTime;
     }
 
+    public bool InAttackRange(ITakeHit target)
+    {
+        var distance = Vector3.Distance(transform.position, target.transform.position);
+        return distance <= attackRange;
+    }
+
     /// <summary>
     /// Called by animation event via AnimationImpactWatcher
     /// </summary>
@@ -59,7 +71,18 @@ public class Attacker : MonoBehaviour, IAttack
     {
         animator.SetTrigger("Attack");
         attackTimer = 0;
-        target.TakeHit(this);
+
+        StartCoroutine(DoAttack(target));
+    }
+
+    private IEnumerator DoAttack(ITakeHit target)
+    {
+        yield return new WaitForSeconds(attackImpactDelay);
+
+        if (InAttackRange(target))
+        {
+            target.TakeHit(this);
+        }
     }
 
     public void Attack()

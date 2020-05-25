@@ -48,9 +48,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
         }
         else
         {
-            float distance = Vector3.Distance(transform.position, target.transform.position);
-
-            if (distance > 2f)
+            if (attacker.InAttackRange(target) == false)
             {
                 FollowTarget();
             }
