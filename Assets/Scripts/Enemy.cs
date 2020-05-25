@@ -90,9 +90,9 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
         }
     }
 
-    public void TakeHit(IAttack attacker)
+    public void TakeHit(IDamage attacker)
     {
-        currentHealth--;
+        currentHealth -= attacker.Damage;
 
         OnHealthChanged(currentHealth, maxHealth);
 

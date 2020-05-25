@@ -11,6 +11,8 @@ public class ProjectileAttacker : MonoBehaviour, IAttack
     private float attackRefreshSpeed = 1f;
     [SerializeField]
     private Projectile projectilePrefab;
+    [SerializeField]
+    private float launchYOffset = 1f;
 
     private Animator animator;
 
@@ -32,6 +34,7 @@ public class ProjectileAttacker : MonoBehaviour, IAttack
 
         animator.SetTrigger("Attack");
 
-        projectilePrefab.Get<PooledMonoBehaviour>(transform.position, transform.rotation);
+        Vector3 spawnPosition = transform.position + Vector3.up * launchYOffset;
+        projectilePrefab.Get<PooledMonoBehaviour>(spawnPosition, transform.rotation);
     }
 }

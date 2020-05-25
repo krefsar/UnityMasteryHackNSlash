@@ -40,7 +40,7 @@ public class PooledMonoBehaviour : MonoBehaviour
         }
     }
 
-    protected void ReturnToPool(float delay)
+    protected void ReturnToPool(float delay = 0f)
     {
         StartCoroutine(ReturnToPoolAfterSeconds(delay));
     }

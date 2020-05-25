@@ -81,7 +81,7 @@ public class Character : MonoBehaviour, ITakeHit, IDie
         this.controller = controller;
     }
 
-    public void TakeHit(IAttack attacker)
+    public void TakeHit(IDamage attacker)
     {
         if (!IsDead)
         {

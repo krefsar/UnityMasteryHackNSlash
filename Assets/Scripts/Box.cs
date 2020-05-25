@@ -11,7 +11,7 @@ public class Box : MonoBehaviour, ITakeHit
         rb = GetComponent<Rigidbody>();
     }
 
-    public void TakeHit(IAttack attacker)
+    public void TakeHit(IDamage attacker)
     {
         Vector3 direction = Vector3.Normalize(transform.position - attacker.transform.position);
         rb.AddForce(direction * forceAmount, ForceMode.Impulse);
