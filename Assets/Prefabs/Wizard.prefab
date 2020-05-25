@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1
-  projectilePrefab: {fileID: 6958548618825230942, guid: 4d96302acb81593498612bb5eee654d0,
+  projectilePrefab: {fileID: 8573384273658495508, guid: 4d96302acb81593498612bb5eee654d0,
     type: 3}
 --- !u!54 &164188082520280356
 Rigidbody:
