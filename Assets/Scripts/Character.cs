@@ -12,6 +12,7 @@ public class Character : MonoBehaviour, ITakeHit, IDie
 
     public event Action<int, int> OnHealthChanged = delegate { };
     public event Action<IDie> OnDied = delegate { };
+    public event Action OnHit = delegate { };
 
     private Animator animator;
     private Controller controller;
@@ -24,6 +25,8 @@ public class Character : MonoBehaviour, ITakeHit, IDie
     private int damage;
     [SerializeField]
     private int maxHealth = 10;
+    [SerializeField]
+    private float controllerDeadZoneThreshold = 0.4f;
 
     private int currentHealth;
 
@@ -47,7 +50,7 @@ public class Character : MonoBehaviour, ITakeHit, IDie
     private void Update()
     {
         Vector3 direction = controller.GetDirection();
-        if (direction.magnitude > 0.4f)
+        if (direction.magnitude > controllerDeadZoneThreshold)
         {
             Vector3 velocity = (direction * moveSpeed).With(y: rb.velocity.y);
             rb.velocity = velocity;
@@ -87,6 +90,8 @@ public class Character : MonoBehaviour, ITakeHit, IDie
         {
             currentHealth -= attacker.Damage;
             OnHealthChanged(currentHealth, maxHealth);
+
+            OnHit();
 
             if (IsDead)
             {

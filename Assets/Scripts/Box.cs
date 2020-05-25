@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Box : MonoBehaviour, ITakeHit
 {
+    public event Action OnHit = delegate { };
+
     private Rigidbody rb;
+
     [SerializeField]
     private float forceAmount = 10f;
 
@@ -15,5 +19,7 @@ public class Box : MonoBehaviour, ITakeHit
     {
         Vector3 direction = Vector3.Normalize(transform.position - attacker.transform.position);
         rb.AddForce(direction * forceAmount, ForceMode.Impulse);
+
+        OnHit();
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 694066497286056248}
   - component: {fileID: 1045646152893854496}
   - component: {fileID: -3494834845314841430}
+  - component: {fileID: 9157284130791383371}
   m_Layer: 0
   m_Name: EnemyOrc
   m_TagString: Untagged
@@ -63,7 +64,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPoolSize: 50
-  impactParticle: {fileID: 11400002, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   maxHealth: 3
 --- !u!195 &694066497286056248
 NavMeshAgent:
@@ -117,6 +117,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathParticlePrefab: {fileID: 114358004396844976, guid: e473029e4c70ad543a6879b82a732f4f,
     type: 3}
+--- !u!114 &9157284130791383371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6973802155909110367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad8efaa0aef27f4584151dd7ab1d0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticle: {fileID: 11400000, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
 --- !u!1001 &6973802155807907690
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,21 +7,19 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
 {
+    public event Action<IDie> OnDied = delegate { };
+    public event Action<int, int> OnHealthChanged = delegate { };
+    public event Action OnHit = delegate { };
+
     private Animator animator;
     private NavMeshAgent navMeshAgent;
     private Attacker attacker;
-
-    [SerializeField]
-    private PooledMonoBehaviour impactParticle;
 
     [SerializeField]
     private int maxHealth = 3;
 
     private int currentHealth;
     private Character target;
-
-    public event Action<IDie> OnDied = delegate { };
-    public event Action<int, int> OnHealthChanged = delegate { };
 
     private bool isDead {  get { return currentHealth <= 0; } }
 
@@ -96,7 +94,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
 
         OnHealthChanged(currentHealth, maxHealth);
 
-        impactParticle.Get<PooledMonoBehaviour>(transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        OnHit();
 
         if (isDead)
         {

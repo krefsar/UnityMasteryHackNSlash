@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7237423754781661378}
   - component: {fileID: 2561517488007686945}
   - component: {fileID: 4983083808650956649}
+  - component: {fileID: 2030816166639318179}
   m_Layer: 8
   m_Name: Viking
   m_TagString: Untagged
@@ -98,6 +99,7 @@ MonoBehaviour:
   moveSpeed: 5
   damage: 0
   maxHealth: 10
+  controllerDeadZoneThreshold: 0.4
 --- !u!114 &7237423754781661378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +144,19 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2030816166639318179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358094673153428605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad8efaa0aef27f4584151dd7ab1d0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticle: {fileID: 11400000, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
 --- !u!1001 &4729302879169272576
 PrefabInstance:
   m_ObjectHideFlags: 0
