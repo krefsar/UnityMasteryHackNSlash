@@ -45,6 +45,11 @@ public class Attacker : MonoBehaviour, IAttack
 
     public bool InAttackRange(ITakeHit target)
     {
+        if (!target.Alive)
+        {
+            return false;
+        }
+
         var distance = Vector3.Distance(transform.position, target.transform.position);
         return distance <= attackRange;
     }
@@ -79,7 +84,7 @@ public class Attacker : MonoBehaviour, IAttack
     {
         yield return new WaitForSeconds(attackImpactDelay);
 
-        if (InAttackRange(target))
+        if (target.Alive && InAttackRange(target))
         {
             target.TakeHit(this);
         }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Box : MonoBehaviour, ITakeHit
 {
     public event Action OnHit = delegate { };
+    public bool Alive { get { return true; } }
 
     private Rigidbody rb;
 

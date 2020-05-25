@@ -7,6 +7,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
 {
+    public bool Alive { get; private set; }
+
     public event Action<IDie> OnDied = delegate { };
     public event Action<int, int> OnHealthChanged = delegate { };
     public event Action OnHit = delegate { };
@@ -23,6 +25,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
 
     private bool isDead {  get { return currentHealth <= 0; } }
 
+
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
@@ -33,6 +36,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
     private void OnEnable()
     {
         currentHealth = maxHealth;
+        Alive = true;
     }
 
     private void Update()
@@ -108,6 +112,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
         animator.SetTrigger("Die");
         navMeshAgent.isStopped = true;
 
+        Alive = false;
         OnDied(this);
 
         ReturnToPool(6f);
