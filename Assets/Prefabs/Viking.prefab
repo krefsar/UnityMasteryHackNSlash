@@ -84,6 +84,8 @@ MonoBehaviour:
   damage: 1
   attackOffset: 1
   attackRadius: 1
+  attackImpactDelay: 1
+  attackRange: 2
 --- !u!114 &1361890696332782071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bd486fb099f594e89d53c4bb31482e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialPoolSize: 5
   moveSpeed: 5
   damage: 0
   maxHealth: 10

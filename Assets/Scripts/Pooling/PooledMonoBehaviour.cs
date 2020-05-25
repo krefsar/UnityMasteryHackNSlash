@@ -32,7 +32,7 @@ public class PooledMonoBehaviour : MonoBehaviour
         return pooledObject;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         if (OnReturnToPool != null)
         {

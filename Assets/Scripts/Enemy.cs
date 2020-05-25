@@ -46,7 +46,7 @@ public class Enemy : PooledMonoBehaviour, ITakeHit, IDie
             return;
         }
 
-        if (target == null)
+        if (target == null || !target.Alive)
         {
             AcquireTarget();
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Character CharacterPrefab;
+    public PooledMonoBehaviour CharacterPrefab;
     public Controller Controller;
 
     public bool HasController { get { return Controller != null; } }
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
 
     public void SpawnCharacter()
     {
-        var character = Instantiate(CharacterPrefab, Vector3.zero, Quaternion.identity);
+        var character = CharacterPrefab.Get<Character>(Vector3.zero, Quaternion.identity);
         character.SetController(Controller);
         character.OnDied += HandleCharacterDied;
 
@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
     private void HandleCharacterDied(IDie character)
     {
         character.OnDied -= HandleCharacterDied;
-        Destroy(character.gameObject);
+
+        character.gameObject.SetActive(false);
 
         StartCoroutine(RespawnAfterDelay());
     }

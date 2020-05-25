@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Character : MonoBehaviour, ITakeHit, IDie
+public class Character : PooledMonoBehaviour, ITakeHit, IDie
 {
     public static List<Character> AllCharacters = new List<Character>();
 
@@ -73,12 +73,14 @@ public class Character : MonoBehaviour, ITakeHit, IDie
         }
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
         if (AllCharacters.Contains(this))
         {
             AllCharacters.Remove(this);
         }
+
+        base.OnDisable();
     }
 
     internal void SetController(Controller controller)
