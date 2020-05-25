@@ -1,14 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class ProjectileAttacker : MonoBehaviour, IAttack
+public class ProjectileAttacker : AbilityBase, IAttack
 {
     public int Damage { get { return 1; } }
-    public bool CanAttack { get { return attackTimer >= attackRefreshSpeed; } }
 
-    [SerializeField]
-    private float attackRefreshSpeed = 1f;
     [SerializeField]
     private Projectile projectilePrefab;
     [SerializeField]
@@ -16,16 +11,9 @@ public class ProjectileAttacker : MonoBehaviour, IAttack
 
     private Animator animator;
 
-    private float attackTimer;
-
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void Update()
-    {
-        attackTimer += Time.deltaTime;
     }
 
     public void Attack()
@@ -36,5 +24,10 @@ public class ProjectileAttacker : MonoBehaviour, IAttack
 
         Vector3 spawnPosition = transform.position + Vector3.up * launchYOffset;
         projectilePrefab.Get<PooledMonoBehaviour>(spawnPosition, transform.rotation);
+    }
+
+    protected override void OnTryUse()
+    {
+        Attack();
     }
 }

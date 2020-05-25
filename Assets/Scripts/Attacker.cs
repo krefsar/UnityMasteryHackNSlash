@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-public class Attacker : MonoBehaviour, IAttack
+public class Attacker : AbilityBase, IAttack
 {
     public int Damage { get { return damage; } }
-    public bool CanAttack { get { return attackTimer >= attackRefreshSpeed; } }
 
-    [SerializeField]
-    private float attackRefreshSpeed = 1.5f;
+    private Animator animator;
+
     [SerializeField]
     private int damage = 1;
     [SerializeField]
@@ -20,9 +18,6 @@ public class Attacker : MonoBehaviour, IAttack
     [SerializeField]
     private float attackRange = 2f;
 
-    private Animator animator;
-
-    private float attackTimer;
     private Collider[] attackResults;
 
     private void Awake()
@@ -38,10 +33,6 @@ public class Attacker : MonoBehaviour, IAttack
         attackResults = new Collider[10];
     }
 
-    private void Update()
-    {
-        attackTimer += Time.deltaTime;
-    }
 
     public bool InAttackRange(ITakeHit target)
     {
@@ -92,6 +83,12 @@ public class Attacker : MonoBehaviour, IAttack
 
     public void Attack()
     {
+        attackTimer = 0;
         animator.SetTrigger("Attack");
+    }
+
+    protected override void OnTryUse()
+    {
+        Attack();
     }
 }

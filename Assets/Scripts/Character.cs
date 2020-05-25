@@ -86,6 +86,11 @@ public class Character : PooledMonoBehaviour, ITakeHit, IDie
     internal void SetController(Controller controller)
     {
         this.controller = controller;
+
+        foreach (var ability in GetComponents<AbilityBase>())
+        {
+            ability.SetController(controller);
+        }
     }
 
     public void TakeHit(IDamage attacker)
