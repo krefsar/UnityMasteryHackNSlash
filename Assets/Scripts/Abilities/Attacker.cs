@@ -16,10 +16,14 @@ public class Attacker : AbilityBase, IAttack
     [SerializeField]
     private float attackRange = 2f;
 
+    private LayerMask layerMask;
     private Collider[] attackResults;
 
     private void Awake()
     {
+        string currentLayer = LayerMask.LayerToName(gameObject.layer);
+        layerMask = ~LayerMask.GetMask(currentLayer);
+
         var animationImpactWatcher = GetComponentInChildren<AnimationImpactWatcher>();
         if (animationImpactWatcher != null)
         {
@@ -47,7 +51,7 @@ public class Attacker : AbilityBase, IAttack
     private void AnimationImpactWatcher_OnImpact()
     {
         Vector3 position = transform.position + transform.forward * attackOffset;
-        int hitCount = Physics.OverlapSphereNonAlloc(position, attackRadius, attackResults);
+        int hitCount = Physics.OverlapSphereNonAlloc(position, attackRadius, attackResults, layerMask);
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -62,7 +66,6 @@ public class Attacker : AbilityBase, IAttack
     public void Attack(ITakeHit target)
     {
         attackTimer = 0;
-
         StartCoroutine(DoAttack(target));
     }
 

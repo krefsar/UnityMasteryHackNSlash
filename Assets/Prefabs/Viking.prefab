@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1.5
   button: 0
-  animationTrigger: 
+  animationTrigger: Attack
   damage: 1
   attackOffset: 1
   attackRadius: 1
