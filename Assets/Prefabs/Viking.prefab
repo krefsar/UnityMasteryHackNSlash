@@ -43,10 +43,11 @@ GameObject:
   - component: {fileID: -1288780868519762684}
   - component: {fileID: 1361890696332782071}
   - component: {fileID: 7237423754781661378}
-  - component: {fileID: 2561517488007686945}
-  - component: {fileID: 4983083808650956649}
   - component: {fileID: 2030816166639318179}
   - component: {fileID: 1155894468100382538}
+  - component: {fileID: -2121928587744929381}
+  - component: {fileID: 2561517488007686945}
+  - component: {fileID: 4983083808650956649}
   m_Layer: 8
   m_Name: Viking
   m_TagString: Untagged
@@ -83,6 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRefreshSpeed: 1.5
   button: 0
+  animationTrigger: 
   damage: 1
   attackOffset: 1
   attackRadius: 1
@@ -119,6 +121,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathParticlePrefab: {fileID: 11400004, guid: 7867af58a6ec48846ae807eb4022fbaa,
     type: 3}
+--- !u!114 &2030816166639318179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358094673153428605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fad8efaa0aef27f4584151dd7ab1d0dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impactParticle: {fileID: 11400000, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
+--- !u!114 &1155894468100382538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358094673153428605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f74882930b1139479b2ec748339cb14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRefreshSpeed: 1.5
+  button: 2
+  animationTrigger: 
+  jumpForce: 300
+--- !u!114 &-2121928587744929381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358094673153428605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad4f7d97e308504085bb707e3405747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRefreshSpeed: 1.5
+  button: 1
+  animationTrigger: SpecialAttack
+  damage: 1
+  attackRadius: 2
+  impactDelay: 0.25
+  knockbackForce: 10
 --- !u!54 &2561517488007686945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,34 +199,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &2030816166639318179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7358094673153428605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad8efaa0aef27f4584151dd7ab1d0dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  impactParticle: {fileID: 11400000, guid: fb7b0526ade434043b350a180d741cf3, type: 3}
---- !u!114 &1155894468100382538
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7358094673153428605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f74882930b1139479b2ec748339cb14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackRefreshSpeed: 1.5
-  button: 2
-  jumpForce: 300
 --- !u!1001 &4729302879169272576
 PrefabInstance:
   m_ObjectHideFlags: 0

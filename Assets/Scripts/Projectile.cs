@@ -3,12 +3,14 @@ using UnityEngine;
 
 public class Projectile : PooledMonoBehaviour, IDamage
 {
-    public int Damage { get { return 1; } }
+    public int Damage { get { return damage; } }
 
     [SerializeField]
     private float moveSpeed = 10f;
     [SerializeField]
     private PooledMonoBehaviour impactParticlePrefab;
+    [SerializeField]
+    private int damage = 1;
 
     private void Update()
     {

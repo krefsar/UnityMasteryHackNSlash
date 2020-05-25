@@ -63,14 +63,6 @@ public class Character : PooledMonoBehaviour, ITakeHit, IDie
         {
             animator.SetFloat("Speed", 0f);
         }
-
-        if (controller.attackPressed)
-        {
-            if (attacker.CanAttack)
-            {
-                attacker.Attack();
-            }
-        }
     }
 
     protected override void OnDisable()

@@ -5,8 +5,6 @@ public class Attacker : AbilityBase, IAttack
 {
     public int Damage { get { return damage; } }
 
-    private Animator animator;
-
     [SerializeField]
     private int damage = 1;
     [SerializeField]
@@ -22,8 +20,6 @@ public class Attacker : AbilityBase, IAttack
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>();
-
         var animationImpactWatcher = GetComponentInChildren<AnimationImpactWatcher>();
         if (animationImpactWatcher != null)
         {
@@ -65,7 +61,6 @@ public class Attacker : AbilityBase, IAttack
 
     public void Attack(ITakeHit target)
     {
-        animator.SetTrigger(animationTrigger);
         attackTimer = 0;
 
         StartCoroutine(DoAttack(target));
@@ -84,10 +79,9 @@ public class Attacker : AbilityBase, IAttack
     public void Attack()
     {
         attackTimer = 0;
-        animator.SetTrigger("Attack");
     }
 
-    protected override void OnTryUse()
+    protected override void OnUse()
     {
         Attack();
     }

@@ -6,6 +6,8 @@ public abstract class AbilityBase : MonoBehaviour
 
     protected float attackTimer;
 
+    private Animator animator;
+
     [SerializeField]
     private float attackRefreshSpeed = 1.5f;
     [SerializeField]
@@ -15,27 +17,35 @@ public abstract class AbilityBase : MonoBehaviour
 
     private Controller controller;
 
-    private void OnEnable()
-    {
-        attackTimer = attackRefreshSpeed;
-    }
+    protected abstract void OnUse();
 
     private void Update()
     {
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+
         attackTimer += Time.deltaTime;
 
-        if (controller != null &&
-            CanAttack &&
-            controller.ButtonDown(button))
+        if (ShouldTryUse())
         {
-            OnTryUse();
+            if (!string.IsNullOrEmpty(animationTrigger))
+            {
+                animator.SetTrigger(animationTrigger);
+            }
+
+            OnUse();
         }
+    }
+
+    private bool ShouldTryUse()
+    {
+        return controller != null && CanAttack && controller.ButtonDown(button);
     }
 
     public void SetController(Controller controller)
     {
         this.controller = controller;
     }
-
-    protected abstract void OnTryUse();
 }

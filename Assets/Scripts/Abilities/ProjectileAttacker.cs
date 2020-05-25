@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProjectileAttacker : AbilityBase, IAttack
 {
-    public int Damage { get { return 1; } }
+    public int Damage { get { return damage; } }
 
     [SerializeField]
     private Projectile projectilePrefab;
@@ -11,19 +11,13 @@ public class ProjectileAttacker : AbilityBase, IAttack
     private float launchYOffset = 1f;
     [SerializeField]
     private float launchDelay = 1f;
-
-    private Animator animator;
-
-    private void Awake()
-    {
-        animator = GetComponentInChildren<Animator>();
-    }
+    [SerializeField]
+    private int damage = 1;
 
     public void Attack()
     {
         attackTimer = 0;
 
-        animator.SetTrigger(animationTrigger);
         StartCoroutine(LaunchAfterDelay());
     }
 
@@ -34,7 +28,7 @@ public class ProjectileAttacker : AbilityBase, IAttack
         projectilePrefab.Get<PooledMonoBehaviour>(spawnPosition, transform.rotation);
     }
 
-    protected override void OnTryUse()
+    protected override void OnUse()
     {
         Attack();
     }

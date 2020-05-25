@@ -12,7 +12,7 @@ public class Jump : AbilityBase
         rb = GetComponent<Rigidbody>();
     }
 
-    protected override void OnTryUse()
+    protected override void OnUse()
     {
         attackTimer = 0;
         rb.AddForce(Vector3.up * jumpForce);
