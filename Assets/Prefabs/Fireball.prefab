@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2775433149015484092}
+  - component: {fileID: 8573384273658495508}
   - component: {fileID: 7876035759637353766}
   - component: {fileID: 6915548081701238674}
   - component: {fileID: 1424134536944300523}
-  - component: {fileID: 8573384273658495508}
   - component: {fileID: -7441988866410743419}
   m_Layer: 9
   m_Name: Fireball
@@ -36,6 +36,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8573384273658495508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6958548618825230942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6829da97905a6408fba5b64e46f389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPoolSize: 50
+  moveSpeed: 10
+  impactParticlePrefab: {fileID: 114324878773532104, guid: 7e48ba6b1b968764490bbc70b66e3fe1,
+    type: 3}
 --- !u!33 &7876035759637353766
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -96,20 +112,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8573384273658495508
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6958548618825230942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd6829da97905a6408fba5b64e46f389, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialPoolSize: 50
-  moveSpeed: 10
 --- !u!54 &-7441988866410743419
 Rigidbody:
   m_ObjectHideFlags: 0
